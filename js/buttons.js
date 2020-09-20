@@ -1,4 +1,5 @@
-import render from './ui.js'
+import render from './ui.js';
+import api from './api.js';
 
 //event listener
  function newButton() {
@@ -22,11 +23,33 @@ import render from './ui.js'
     $("main").on("click", "#add", (event) => {
       event.preventDefault();
       console.log("add button was clicked!");
-      $("main").append($("#title").val());
+      const title = $('main').find('#title').val(); 
+      console.log(title);
+      render.render(render.initialView);
+      $('main').append(bookmarks());
     });
   }
 
+  function bookmarks() {
+    try {  
+    api.getBookmarks().then(list => 
+        console.log(list)
+     /*   `
+      <ul>
+      ${list.map(x => bookmark(x))}
+      </ul>
+      `)}*/
+    )}
+      catch(e) {
+          console.log(e.message);
+      }
+  }
 
+  function bookmark(bookmark) {
+      return `
+      <li>${bookmark.title}</li>
+      `
+  }
   export default {
       addButton, 
       cancelButton, 

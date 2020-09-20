@@ -1,11 +1,14 @@
+import api from './api.js';
 import buttons from './buttons.js';
-import render from './ui.js';
+import ui from './ui.js';
+
   
   function main() {
+    //api.getBookmarks();
     buttons.addButton(); 
     buttons.newButton(); 
     buttons.cancelButton();
-    render.render(render.initialView);
+    ui.render(ui.initialView);
   }
   
   $(main);
