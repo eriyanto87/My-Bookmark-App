@@ -1,8 +1,14 @@
 //html template
 //view
-function addBookmarkView() {
+function initialView() {
     return `
-    <h1>My Bookmark App</h1>
+    <button id="new">New</button>
+    <button>Filter</button>
+    `
+}
+
+function addBookmarkView() {
+  return `
     <div>
     <label>Title:</label>
     <input id="title" type="text" placeholder="title">
@@ -29,33 +35,44 @@ function addBookmarkView() {
     <button id="cancel">Cancel</button>
     <button id="add">Add</button>
     </div>
-    `
+    `;
 }
 
 //event listener
+function newButton() {
+    $('main').on('click', '#new', (event) => {
+        event.preventDefault(); 
+        console.log('new button was clicked!');
+        render(addBookmarkView);
+    })
+}
+
 function cancelButton() {
-$('main').on('click', '#cancel', (event) => {
-    event.preventDefault(); 
-    console.log('cancel button was clicked!');
-})
+  $("main").on("click", "#cancel", (event) => {
+    event.preventDefault();
+    console.log("cancel button was clicked!");
+    render(initialView);
+  });
 }
 
 function addButton() {
-$('main').on('click', '#add', (event) => {
+  $("main").on("click", "#add", (event) => {
     event.preventDefault();
-    console.log('add button was clicked!');
-    $('main').append($('#title').val());
-})
+    console.log("add button was clicked!");
+    $("main").append($("#title").val());
+  });
 }
 
 function render(currentView) {
-    $('main').html(addBookmarkView());
+  $('h1').html('My Bookmark App');
+  $("main").html(currentView());
 }
 
 function main() {
-    cancelButton();
-    addButton();
-    render(addBookmarkView);
+  newButton();
+  cancelButton();
+  addButton();
+  render(initialView);
 }
 
 $(main);
