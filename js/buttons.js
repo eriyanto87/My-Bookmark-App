@@ -1,11 +1,12 @@
-
+import render from './ui.js'
 
 //event listener
  function newButton() {
     $("main").on("click", "#new", (event) => {
       event.preventDefault();
       console.log("new button was clicked!");
-      render(addBookmarkView);
+      console.log(render.render)
+      render.render(render.addBookmarkView);
     });
   }
   
@@ -13,7 +14,7 @@
     $("main").on("click", "#cancel", (event) => {
       event.preventDefault();
       console.log("cancel button was clicked!");
-      render(initialView);
+      render.render(render.initialView);
     });
   }
   
