@@ -1,10 +1,17 @@
 //html template
 //view
 function initialView() {
-    return `
+  return `
     <button id="new">New</button>
-    <button>Filter</button>
-    `
+    <select id="filter" placeholder="Filter By" tabindex="1">
+         <option value="">Filter By</option>
+         <option value="1">1+ star</option>
+         <option value="2">2+ stars</option>
+         <option value="3">3+ stars</option>
+         <option value="4">4+ stars</option>
+         <option value="5">5 stars</option>
+    </select>
+    `;
 }
 
 function addBookmarkView() {
@@ -40,11 +47,11 @@ function addBookmarkView() {
 
 //event listener
 function newButton() {
-    $('main').on('click', '#new', (event) => {
-        event.preventDefault(); 
-        console.log('new button was clicked!');
-        render(addBookmarkView);
-    })
+  $("main").on("click", "#new", (event) => {
+    event.preventDefault();
+    console.log("new button was clicked!");
+    render(addBookmarkView);
+  });
 }
 
 function cancelButton() {
@@ -64,7 +71,7 @@ function addButton() {
 }
 
 function render(currentView) {
-  $('h1').html('My Bookmark App');
+  $("h1").html("My Bookmark App");
   $("main").html(currentView());
 }
 
