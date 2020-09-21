@@ -51,8 +51,9 @@ function initialView() {
   function bookmarks() {
     try {
       return `<ul>${store.bookmarks
-        .map((x) => `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}-${x.desc}-${x.url}</li>`)
-        .join('')}</ul>`;
+        .map((x) => `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}-${x.desc}-${x.url}</li> <button id="delete">Delete</button>`)
+        .join('')}</ul>
+        `;
     } catch(err) {
        console.log(err.message);
     } 
