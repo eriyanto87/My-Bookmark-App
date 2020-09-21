@@ -3,11 +3,11 @@ const api = "https://thinkful-list-api.herokuapp.com";
 
 // Anytime you manipulate data in your API make sure to sync it with your  store.
 
-function addBookmark({ title, url, desc, rating }) {
+async function addBookmark({ title, url, desc, rating }) {
     // check if desc exists
     // check if rating exists
     try {
-      fetch(`${api}/evi/bookmarks`, {
+      await fetch(`${api}/evi/bookmarks`, {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -15,9 +15,8 @@ function addBookmark({ title, url, desc, rating }) {
         },
         body: JSON.stringify({ title, url, desc, rating })
       })
-        .then((response) => response.json())
-        .then((data) => store.bookmarks = data);
-        console.log(store.bookmarks)
+        .then(response => response.json())
+        .then(data => store.bookmarks = data);
         return store.bookmarks;
     } catch (e) {
       console.log(e.message);
@@ -27,9 +26,8 @@ function addBookmark({ title, url, desc, rating }) {
   async function getBookmarks() {
     try {
       const res = await fetch(`${api}/evi/bookmarks`)
-      .then((response) => response.json())
-      .then((data) => store.bookmarks = data);
-      console.log(store.bookmarks)
+      .then(response => response.json())
+      .then(data => store.bookmarks = data);
       return store.bookmarks;
     } catch (e) {
       console.log(e.message);

@@ -7,7 +7,6 @@ import store from './store.js';
     $("main").on("click", "#new", (event) => {
       event.preventDefault();
       console.log("new button was clicked!");
-      console.log(ui.render)
       ui.render(ui.addBookmarkView);
     });
   }
@@ -24,15 +23,15 @@ import store from './store.js';
     $("main").on("click", "#add", (event) => {
       event.preventDefault();
       console.log("add button was clicked!");
-
       const title = $('main').find('#title').val(); 
       const url = $('main').find('#url').val();
       const desc = $('main').find('#desc').val();
       const rating = $('main').find('#rating').val(); 
       console.log(title, url, desc, rating);
       store.bookmarks.push({title:title, url: url, desc: desc, rating: rating})
-      $('main').append(store.bookmarks);
-      return ui.render(ui.initialView);
+      console.log(store.bookmarks); 
+      $('main').append(store.bookmarks); 
+      ui.render(ui.initialView);
     })
   }
 

@@ -38,7 +38,7 @@ function initialView() {
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      <option value="5">5</option>
+      <option value="5">5(best)</option>
       </select>
       </div>
       <div>
@@ -51,19 +51,23 @@ function initialView() {
   function bookmarks() {
     try {
       return `<ul>${store.bookmarks
-        .map((x) => `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}</li>`)
+        .map((x) => `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}-${x.desc}-${x.url}</li>`)
         .join('')}</ul>`;
     } catch(err) {
        console.log(err.message);
     } 
   }
 
+  function header() {
+    return `
+    <h1>My Bookmark App</h1>
+    `
+  }
+
 function render(currentView) {
-  $("h1").html("My Bookmark App");
-  $("main").html(currentView());
-  buttons.addButton(); 
-  buttons.newButton(); 
-  buttons.cancelButton();
+  $("main").html(`
+  ${header()}
+  ${currentView()}`)
 }
 
 export default {
