@@ -1,7 +1,9 @@
 import ui from './ui.js';
+import api from './api.js';
 
   async function main() {
-    await ui.render(ui.initialView);
+    await api.getBookmarks();
+    ui.render(ui.initialView);
   }
   
   $(main);

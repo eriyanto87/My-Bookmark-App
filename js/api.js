@@ -15,8 +15,8 @@ function addBookmark({ title, url, desc, rating }) {
         },
         body: JSON.stringify({ title, url, desc, rating })
       })
-        .then((response) => response)
-        .then((data) => console.log(data.json()));
+        .then((response) => response.json())
+        .then((data) => console.log(data));
     } catch (e) {
       console.log(e.message);
     }
@@ -25,13 +25,13 @@ function addBookmark({ title, url, desc, rating }) {
   async function getBookmarks() {
     try {
       const res = await fetch(`${api}/evi/bookmarks`)
-      console.log(res)
-      store.bookmarks = await res.json();
+      .then((response) => response.json())
+      .then((data) => store.bookmarks = data);
       return store.bookmarks;
     } catch (e) {
       console.log(e.message);
     }
-  }  
+  } 
 
 export default {
     addBookmark, 
