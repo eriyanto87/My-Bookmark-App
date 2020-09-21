@@ -1,3 +1,4 @@
+import api from './api.js';
 import buttons from './buttons.js';
 
 function initialView() {
@@ -11,6 +12,7 @@ function initialView() {
            <option value="4">4+ stars</option>
            <option value="5">5 stars</option>
       </select>
+      ${bookmarks()}
       `;
   }
   
@@ -45,14 +47,31 @@ function initialView() {
       `;
   }
 
+  function bookmarks() {
+    return api
+      .getBookmarks()
+      .then(
+        (res) =>
+          `<ul>${res
+            .map(
+              (x) => `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}</li>`
+            )
+            .join('')}</ul>`
+      )
+      .catch((err) => console.log(err.message));
+  }
 
 function render(currentView) {
   $("h1").html("My Bookmark App");
   $("main").html(currentView());
+    buttons.addButton(); 
+    buttons.newButton(); 
+    buttons.cancelButton();
 }
 
 export default {
   initialView, 
   addBookmarkView,
+  bookmarks,
   render
 }
