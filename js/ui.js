@@ -25,20 +25,20 @@ function initialView() {
       </div>
       <div>
       <label>URL Link:</label>
-      <input type="text" placeholder="url link">
+      <input id="url" type="text" placeholder="url link">
       </div>
       <div>
       <label>Description:</label> 
-      <input type="text-area" placeholder="description">
+      <input id="desc" type="text-area" placeholder="description">
       </div>
       <div>
       <label>Rating:</label>
-      <select name="rating">  
-      <option value="one">1</option>
-      <option value="two">2</option>
-      <option value="three">3</option>
-      <option value="four">4</option>
-      <option value="five">5</option>
+      <select id="rating" name="rating">  
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
       </select>
       </div>
       <div>

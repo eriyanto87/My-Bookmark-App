@@ -1,5 +1,6 @@
 import ui from './ui.js';
 import api from './api.js';
+import store from './store.js';
 
 //event listener
  function newButton() {
@@ -23,10 +24,16 @@ import api from './api.js';
     $("main").on("click", "#add", (event) => {
       event.preventDefault();
       console.log("add button was clicked!");
+
       const title = $('main').find('#title').val(); 
-      console.log(title);
-      ui.render(ui.initialView);
-    });
+      const url = $('main').find('#url').val();
+      const desc = $('main').find('#desc').val();
+      const rating = $('main').find('#rating').val(); 
+      console.log(title, url, desc, rating);
+      store.bookmarks.push({title:title, url: url, desc: desc, rating: rating})
+      $('main').append(store.bookmarks);
+      return ui.render(ui.initialView);
+    })
   }
 
 
