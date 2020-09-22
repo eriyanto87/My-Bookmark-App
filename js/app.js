@@ -9,6 +9,7 @@ import buttons from './buttons.js';
     buttons.addButton();
     buttons.newButton();
     buttons.cancelButton();
+    buttons.deleteButton();
    });
   }
   

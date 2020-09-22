@@ -1,12 +1,13 @@
 import ui from './ui.js';
 import api from './api.js';
+import store from './store.js';
 
 // you want to change where you render your ui bookmark view
 // you don't want to rerender the DOM after you click on
 // `new` because if you do that then the whole dom will rerender
 // even though you didn't change the data.
 function newButton() {
-    $('#new').on('click', (event) => {
+    $('main').on('click', '#new', (event) => {
       event.preventDefault();
       // no need to rerender the whole dom when you
       // click the new button. You're simply manipulating the DOM
@@ -18,10 +19,6 @@ function newButton() {
 
 function cancelButton() {
   $('main').on('click', '#cancel', (event) => {
-    
-    // no need to rerender the whole dom when you
-    // click the cancel button. Only rerender when
-    // the storechanges.
     return $('.add-bookmark-form').remove();
   });
 }
@@ -35,6 +32,7 @@ function addButton() {
     let desc = $('main').find('#desc').val();
     let rating = $('main').find('#rating').val();
 
+    console.log(title, url, desc, rating);
     // Always good to have multiple validations.
     if (!title || title.trim() === '') {
       // handle a better way to display an error this just prevents
@@ -53,12 +51,29 @@ function addButton() {
     return api
       .addBookmark({ title, url, desc, rating })
       .then(() => ui.render())
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
   });
+}
+
+function deleteButton() {
+ $('main').on('click', '#delete', (event) => {
+     console.log('delete button clicked'); 
+
+    $(event.target).parent().remove(); 
+
+    let id = $(event.target).parent().attr('id')
+    console.log(id)
+
+     return api
+     .deleteBookmarks(id)
+     .then(() => ui.render())
+     .catch((err) => console.log(err.message))
+ })
 }
 
 export default {
   addButton,
   cancelButton,
-  newButton
+  newButton, 
+  deleteButton
 };  

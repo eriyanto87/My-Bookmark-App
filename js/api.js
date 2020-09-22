@@ -2,6 +2,7 @@ import store from './store.js';
 const api = 'https://thinkful-list-api.herokuapp.com';
 // Anytime you manipulate data in your API make sure to sync
 // it with your  store. Always!
+
 function addBookmark(bookmark) {
   // check if desc exists
   // check if rating exists
@@ -14,18 +15,30 @@ function addBookmark(bookmark) {
     body: JSON.stringify(bookmark)
   })
     .then((response) => response.json())
-    .then(newBookmark=>store.bookmarks = [...store.bookmarks,newBookmark])
+    .then(newBookmark => store.bookmarks = [...store.bookmarks,newBookmark])
     .catch((err) => console.log(err.message));
 }
+
 function getBookmarks() {
   return fetch(`${api}/evi/bookmarks`)
     .then((response) => response.json())
     .then((data) => {
       store.bookmarks = data;
       return store.bookmarks;
+      console.log(store.bookmarks)
     });
 }
+
+function deleteBookmarks(id) {
+  return fetch(`${api}/evi/bookmarks/${id}`, {
+    method: 'DELETE'
+  })
+  .then(response => response.json())
+  .then(data => store.bookmarks = store.bookmarks.filter(bookmark=>bookmark.id!==id))
+}
+
 export default {
   addBookmark,
-  getBookmarks
+  getBookmarks, 
+  deleteBookmarks
 };

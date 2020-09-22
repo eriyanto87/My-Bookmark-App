@@ -17,8 +17,6 @@ function toggleAddBookmark() {
 }
 
 function addBookmarkView() {
-  // you want to convert this to a form for accessibility reasons and
-  // because it's semantic
   return `
     <form class="add-bookmark-form">
       <p>
@@ -51,14 +49,15 @@ function addBookmarkView() {
     `;
 }
 
-function bookmarks() {
-  return `<ul>${store.bookmarks
+ function bookmarks() {
+  return `<ul id="bookmarks">${store.bookmarks
     .map(
-      (x) =>
-        `<li data-bookmark-id=${x.id}>${x.title}-${x.rating}-${x.desc}-${x.url}</li> <button id="delete">Delete</button>`
+      (x) => 
+        `<li id=${x.id}>${x.title}-${x.rating}-${x.desc}-${x.url}<button id="delete">Delete</button></li> `
     )
     .join('')}</ul>
         `;
+        
 }
 
 function header() {
@@ -79,8 +78,6 @@ function render() {
       ${toggleAddBookmark()}
       ${bookmarks()}
     `);
-    
-  
 }
 
 export default {
