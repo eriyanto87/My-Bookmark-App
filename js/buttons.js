@@ -1,43 +1,75 @@
 import ui from './ui.js';
 import api from './api.js';
-import store from './store.js';
 
-//event listener
- function newButton() {
-    $("main").on("click", "#new", (event) => {
+// you want to change where you render your ui bookmark view
+// you don't want to rerender the DOM after you click on
+// `new` because if you do that then the whole dom will rerender
+// even though you didn't change the data.
+function newButton() {
+    $('#new').on('click', (event) => {
       event.preventDefault();
-      console.log("new button was clicked!");
-      ui.render(ui.addBookmarkView);
+      // no need to rerender the whole dom when you
+      // click the new button. You're simply manipulating the DOM
+      // not the store.
+      return $('main').prepend(ui.addBookmarkView());
     });
   }
-  
-  function cancelButton() {
-    $("main").on("click", "#cancel", (event) => {
-      event.preventDefault();
-      console.log("cancel button was clicked!");
-      ui.render(ui.initialView);
-    });
-  }
-  
-  function addButton() {
-    $("main").on("click", "#add", (event) => {
-      event.preventDefault();
-      console.log("add button was clicked!");
-      const title = $('main').find('#title').val(); 
-      const url = $('main').find('#url').val();
-      const desc = $('main').find('#desc').val();
-      const rating = $('main').find('#rating').val(); 
-      console.log(title, url, desc, rating);
-      store.bookmarks.push({title:title, url: url, desc: desc, rating: rating})
-      console.log(store.bookmarks); 
-      $('main').append(store.bookmarks); 
-      ui.render(ui.initialView);
-    })
-  }
 
 
-  export default {
-      addButton, 
-      cancelButton, 
-      newButton
-  }
+function cancelButton() {
+  $('main').on('click', '#cancel', (event) => {
+    event.preventDefault();
+    // no need to rerender the whole dom when you
+    // click the cancel button. Only rerender when
+    // the storechanges.
+    return $('.add-bookmark-form').remove();
+  });
+}
+
+function addButton() {
+  $('main').on('click', '#add', (event) => {
+    event.preventDefault();
+    console.log('add button was clicked!');
+    let title = $('main').find('#title').val();
+    let url = $('main').find('#url').val();
+    let desc = $('main').find('#desc').val();
+    let rating = $('main').find('#rating').val();
+
+    // Since description and rating is optional we need to check for it
+    // and if it doesn't exist assign a value of null. What .trim()
+    // does is checks if there's a bunch of empty spaces.
+    // also probably should take this out into it's own function since it's
+    // getting big.
+    if (!desc || desc.trim() === '') {
+      desc = null;
+    }
+
+    if (!rating || rating.trim() === '') {
+      rating = null;
+    }
+
+    // Always good to have multiple validations.
+    if (!title || title.trim() === '') {
+      // handle a better way to display an error this just prevents
+      // the rest of the function from running
+      return;
+    }
+
+    if (!url || url.trim() === '') {
+      // handle a better way to display an error this just prevents
+      // the rest of the function from running
+      return;
+    }
+    console.log(title, url, desc, rating)
+    return api
+      .addBookmark({ title, url, desc, rating })
+      .then(() => ui.render())
+      .catch((err) => console.log(err));
+  });
+}
+
+export default {
+  addButton,
+  cancelButton,
+  newButton
+};  
