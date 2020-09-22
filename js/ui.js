@@ -55,7 +55,19 @@ function addBookmarkView() {
   return `<ul id="bookmarks">${store.bookmarks
     .map(
       (x) => 
-        `<li id=${x.id}>${x.title}-${x.rating}-${x.desc}-<a href='${x.url}'>Visit Site</a><button id="delete">Delete</button></li> `
+        `<li id=${x.id}>
+        <div class="bookmark">
+        Title: ${x.title}  
+        Rating: ${x.rating}
+        </div>
+        <div class="boomark-info"hidden>
+        ${x.desc}-<a href='${x.url}'>Visit Site</a> 
+        </div>
+        <button id="toggle">More Info</button>
+        <button id="delete">Delete</button>
+        </li> 
+        
+        `
     )
     .join('')}</ul>
         `;

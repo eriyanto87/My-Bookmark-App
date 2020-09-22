@@ -35,10 +35,12 @@ function deleteBookmarks(id) {
   })
   .then(response => response.json())
   .then(data => store.bookmarks = store.bookmarks.filter(bookmark=>bookmark.id!==id))
+  .catch(error => alert(error.message))
 }
+
 
 export default {
   addBookmark,
   getBookmarks, 
   deleteBookmarks
-};
+}
