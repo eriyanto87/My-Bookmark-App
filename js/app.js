@@ -1,7 +1,15 @@
 import ui from './ui.js';
+import api from './api.js';
+import buttons from './buttons.js';
 
  function init() {
-    ui.render();
+   api.getBookmarks()
+   .then(()=>{
+    ui.render()
+    buttons.addButton();
+    buttons.newButton();
+    buttons.cancelButton();
+   });
   }
   
   $(init);

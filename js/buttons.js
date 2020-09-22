@@ -18,7 +18,7 @@ function newButton() {
 
 function cancelButton() {
   $('main').on('click', '#cancel', (event) => {
-    event.preventDefault();
+    
     // no need to rerender the whole dom when you
     // click the cancel button. Only rerender when
     // the storechanges.
@@ -27,7 +27,7 @@ function cancelButton() {
 }
 
 function addButton() {
-  $('main').on('click', '#add', (event) => {
+  $('main').on('submit', '.add-bookmark-form', (event) => {
     event.preventDefault();
     console.log('add button was clicked!');
     let title = $('main').find('#title').val();
@@ -35,32 +35,21 @@ function addButton() {
     let desc = $('main').find('#desc').val();
     let rating = $('main').find('#rating').val();
 
-    // Since description and rating is optional we need to check for it
-    // and if it doesn't exist assign a value of null. What .trim()
-    // does is checks if there's a bunch of empty spaces.
-    // also probably should take this out into it's own function since it's
-    // getting big.
-    if (!desc || desc.trim() === '') {
-      desc = null;
-    }
-
-    if (!rating || rating.trim() === '') {
-      rating = null;
-    }
-
     // Always good to have multiple validations.
     if (!title || title.trim() === '') {
       // handle a better way to display an error this just prevents
       // the rest of the function from running
-      return;
+      alert('Missing Title');
+      return false;
     }
 
     if (!url || url.trim() === '') {
       // handle a better way to display an error this just prevents
       // the rest of the function from running
-      return;
+      alert('Missing url');
+      return false;
     }
-    console.log(title, url, desc, rating)
+    //console.log(title, url, desc, rating)
     return api
       .addBookmark({ title, url, desc, rating })
       .then(() => ui.render())

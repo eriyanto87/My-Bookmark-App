@@ -20,20 +20,20 @@ function addBookmarkView() {
   // you want to convert this to a form for accessibility reasons and
   // because it's semantic
   return `
-    <div class="add-bookmark-form">
-      <div>
-      <label>Title:</label>
-      <input id="title" type="text" placeholder="title">
-      </div>
-      <div>
+    <form class="add-bookmark-form">
+      <p>
+        <label>Title:</label>
+        <input id="title" type="text" placeholder="title">
+      </p>
+      <p>
       <label>URL Link:</label>
       <input id="url" type="text" placeholder="url link">
-      </div>
-      <div>
+      </p>
+      <p>
       <label>Description:</label> 
       <input id="desc" type="text-area" placeholder="description">
-      </div>
-      <div>
+      </p>
+      <p>
       <label>Rating:</label>
       <select id="rating" name="rating">  
       <option value="1">1</option>
@@ -42,12 +42,12 @@ function addBookmarkView() {
       <option value="4">4</option>
       <option value="5">5(best)</option>
       </select>
-      </div>
-      <div>
-      <button id="cancel">Cancel</button>
-      <button id="add">Add</button>
-      </div>
-    </div>
+      </p>
+      <p>
+      <button type="reset" id="cancel">Cancel</button>
+      <button type="submit">Add</button>
+      </p>
+    </form>
     `;
 }
 
@@ -73,16 +73,14 @@ function render() {
   // Before doing anything else and then do it again after you
   // add, delete or edit a bookmark so this automatically should
   // do that and you just call render() each time.
-  api.getBookmarks().then(() => {
+
     $('main').html(`
       ${header()}
       ${toggleAddBookmark()}
       ${bookmarks()}
     `);
-    buttons.addButton();
-    buttons.newButton();
-    buttons.cancelButton();
-  });
+    
+  
 }
 
 export default {
