@@ -59,9 +59,9 @@ function addBookmarkView() {
         Title: ${x.title}  
         Rating: ${x.rating}
         <div class="bookmark-info hidden">
-        ${x.desc}-<a href='${x.url}'>Visit Site</a> 
+        ${x.desc}-<a href='${x.url}' target="_blank">Visit Site</a> 
         </div>
-        <button id="more-info">More Info/Less Info</button>
+        <button id="more-info">More Info/Less Info  </button>
         <button id="delete">Delete</button>
         </li> 
         `
