@@ -4,6 +4,7 @@ import store from './store.js';
 
 function toggleAddBookmark() {
   return `
+    <div id="x">
       <button id="new">New</button>
       <select id="filter" placeholder="Filter By" tabindex="1">
            <option value="">Filter By</option>
@@ -13,6 +14,7 @@ function toggleAddBookmark() {
            <option value="4">4+ stars</option>
            <option value="5">5 stars</option>
       </select>
+      </div>
       `;
 }
 

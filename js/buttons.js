@@ -12,7 +12,7 @@ function newButton() {
       // no need to rerender the whole dom when you
       // click the new button. You're simply manipulating the DOM
       // not the store.
-      return $('main').prepend(ui.addBookmarkView());
+      return $('#x').append(ui.addBookmarkView());
     });
   }
 
@@ -58,8 +58,6 @@ function addButton() {
 function deleteButton() {
  $('main').on('click', '#delete', (event) => {
      console.log('delete button clicked'); 
-
-    $(event.target).parent().remove(); 
 
     let id = $(event.target).parent().attr('id')
     console.log(id)
