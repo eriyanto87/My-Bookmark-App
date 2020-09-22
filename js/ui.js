@@ -1,6 +1,6 @@
 import api from './api.js';
 import buttons from './buttons.js';
-import store from './store.js'
+import store from './store.js';
 
 function toggleAddBookmark() {
   return `
