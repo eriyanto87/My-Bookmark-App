@@ -41,7 +41,7 @@ function addButton() {
       return false;
     }
 
-    if (!url || url.trim() === '') {
+    if (!url || url.trim() === ''|| url === undefined) {
       // handle a better way to display an error this just prevents
       // the rest of the function from running
       alert('Missing url');
@@ -51,7 +51,10 @@ function addButton() {
     return api
       .addBookmark({ title, url, desc, rating })
       .then(() => ui.render())
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        store.setError(err.message);
+      renderError()
+      })
   });
 }
 
@@ -65,13 +68,28 @@ function deleteButton() {
      return api
      .deleteBookmarks(id)
      .then(() => ui.render())
-     .catch((err) => alert(err.message));
+     .catch((err) =>  {
+       store.setError(err.message);
+     renderError()
+     })
 })
+}
+
+function moreInfo() {
+    $('li').on('click', '#more-info', (event) => {
+        console.log('more info button was clicked!'); 
+        let id = $(event.target).parent().attr('id'); 
+        let target = $('main').find(`li[id=${id}]`).find('.bookmark-info');
+        console.log(id, target);
+        $(target).toggleClass('hidden');
+
+    })
 }
 
 export default {
   addButton,
   cancelButton,
   newButton, 
-  deleteButton
+  deleteButton,
+  moreInfo
 };  

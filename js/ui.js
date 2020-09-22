@@ -1,6 +1,6 @@
 import api from './api.js';
 import buttons from './buttons.js';
-import store from './store.js';
+import store from './store.js'
 
 function toggleAddBookmark() {
   return `
@@ -56,17 +56,14 @@ function addBookmarkView() {
     .map(
       (x) => 
         `<li id=${x.id}>
-        <div class="bookmark">
         Title: ${x.title}  
         Rating: ${x.rating}
-        </div>
-        <div class="boomark-info"hidden>
+        <div class="bookmark-info hidden">
         ${x.desc}-<a href='${x.url}'>Visit Site</a> 
         </div>
-        <button id="toggle">More Info</button>
+        <button id="more-info">More Info/Less Info</button>
         <button id="delete">Delete</button>
         </li> 
-        
         `
     )
     .join('')}</ul>

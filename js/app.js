@@ -10,6 +10,7 @@ import buttons from './buttons.js';
     buttons.newButton();
     buttons.cancelButton();
     buttons.deleteButton();
+    buttons.moreInfo();
    });
   }
   

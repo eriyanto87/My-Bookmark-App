@@ -1,3 +1,7 @@
 .bookmark-info {
-    visibility: hidden;
+    color: auto;
+}
+
+.hidden {
+    visibility: hidden; 
 }

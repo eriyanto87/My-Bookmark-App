@@ -15,8 +15,7 @@ function addBookmark(bookmark) {
     body: JSON.stringify(bookmark)
   })
     .then((response) => response.json())
-    .then(newBookmark => store.bookmarks = [...store.bookmarks,newBookmark])
-    .catch((err) => console.log(err.message));
+   .then(newBookmark => store.bookmarks = [...store.bookmarks,newBookmark])
 }
 
 function getBookmarks() {
@@ -35,7 +34,6 @@ function deleteBookmarks(id) {
   })
   .then(response => response.json())
   .then(data => store.bookmarks = store.bookmarks.filter(bookmark=>bookmark.id!==id))
-  .catch(error => alert(error.message))
 }
 
 
