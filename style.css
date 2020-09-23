@@ -1,7 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander&display=swap');
+
+body {
+    text-align: center;
+    color: white;
+    background: #363636;
+    font-family: 'Grandstander', cursive;
+}
+
+button {
+    border-radius: 5px;
+    padding: 0.25rem;
+    background: #E8175D;
+}
+
+li {
+   list-style-type: none;
+   background: #A8A7A7;
+   color: black;
+   align-self: center;
+   margin-top: 1rem;
+   padding: 1rem;
+   border: solid 0.25rem #E8175D;
+}
+
+a {
+    color: #363636;
+}
+
+.bookmarks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 90%;
+    
+}
+
+.add-bookmark-form {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    background: #A8A7A7;
+    color: black;
+    margin: 1rem;
+}
+
 .bookmark-info {
-    color: auto;
+    padding: 1rem;
 }
 
 .hidden {
-    visibility: hidden; 
+    visibility: hidden;
 }
+

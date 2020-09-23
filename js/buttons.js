@@ -2,6 +2,9 @@ import ui from './ui.js';
 import api from './api.js';
 import store from './store.js';
 
+/*const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+const regex = new RegExp(urlPattern);*/
+
 // you want to change where you render your ui bookmark view
 // you don't want to rerender the DOM after you click on
 // `new` because if you do that then the whole dom will rerender
@@ -47,13 +50,20 @@ function addButton() {
       alert('Missing url');
       return false;
     }
+
+    /*if (url.match(urlPattern)) {
+        console.log("successful url input")
+      } else {
+          console.log(url)
+          alert("Please supply a properly formated URL")
+      }*/
+
     //console.log(title, url, desc, rating)
     return api
       .addBookmark({ title, url, desc, rating })
       .then(() => ui.render())
       .catch((err) => {
-        store.setError(err.message);
-      renderError()
+        console.log(err.message);
       })
   });
 }
@@ -69,8 +79,7 @@ function deleteButton() {
      .deleteBookmarks(id)
      .then(() => ui.render())
      .catch((err) =>  {
-       store.setError(err.message);
-     renderError()
+       console.log(err.message);
      })
 })
 }
@@ -79,10 +88,11 @@ function moreInfo() {
     $('li').on('click', '#more-info', (event) => {
         console.log('more info button was clicked!'); 
         let id = $(event.target).parent().attr('id'); 
-        let target = $('main').find(`li[id=${id}]`).find('.bookmark-info');
+        let target = $('main')
+        .find(`li[id=${id}]`)
+        .find('.bookmark-info');
         console.log(id, target);
         $(target).toggleClass('hidden');
-
     })
 }
 

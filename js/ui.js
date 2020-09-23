@@ -21,13 +21,14 @@ function toggleAddBookmark() {
 function addBookmarkView() {
   return `
     <form class="add-bookmark-form">
+      <h3>Add Bookmark</h3>
       <p>
         <label>Title:</label>
         <input id="title" type="text" placeholder="title">
       </p>
       <p>
       <label>URL Link:</label>
-      <input id="url" type="text" placeholder="url link">
+      <input id="url" type="url" placeholder="url link">
       </p>
       <p>
       <label>Description:</label> 
@@ -55,15 +56,22 @@ function addBookmarkView() {
   return `<ul id="bookmarks">${store.bookmarks
     .map(
       (x) => 
-        `<li id=${x.id}>
-        Title: ${x.title}  
+        `
+        <div class="bookmarks">
+        <li id=${x.id}>
+        <p>
+        Name: ${x.title} 
+        </p>
+        <p> 
         Rating: ${x.rating}
+        </p>
         <div class="bookmark-info hidden">
-        ${x.desc}-<a href='${x.url}' target="_blank">Visit Site</a> 
+        ${x.desc}-<a href='${x.url}' target="_blank">Click Here To Visit Site</a> 
         </div>
-        <button id="more-info">More Info/Less Info  </button>
+        <button id="more-info">More/Less Info</button>  
         <button id="delete">Delete</button>
         </li> 
+        </div>
         `
     )
     .join('')}</ul>
@@ -87,6 +95,7 @@ function render() {
     $('main').html(`
       ${header()}
       ${toggleAddBookmark()}
+      <h3>My Bookmarks</h3>
       ${bookmarks()}
     `);
 }
