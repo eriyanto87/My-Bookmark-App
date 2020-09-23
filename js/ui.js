@@ -53,7 +53,33 @@ function addBookmarkView() {
 }
 
  function bookmarks() {
-  return `<ul id="bookmarks">${store.bookmarks
+   //if value 
+   console.log(store.bookmarks, store)
+   console.log(store.filter);
+
+   const filteredBookmarks = store.bookmarks.filter(x => {return x.rating >= store.filter})
+   console.log(filteredBookmarks)
+
+  /*if store.rating exist, retur
+  if (store) return   `
+  <div class="bookmarks">
+  <li id=${x.id}>
+  <p>
+  Name: ${x.title} 
+  </p>
+  <p> 
+  Rating: ${x.rating}
+  </p>
+  <div class="bookmark-info hidden">
+  ${x.desc}-<a href='${x.url}' target="_blank">Click Here To Visit Site</a> 
+  </div>
+  <button id="more-info">More/Less Info</button>  
+  <button id="delete">Delete</button>
+  </li> 
+  </div>
+  `
+*/
+  return `<ul id="bookmarks">${filteredBookmarks
     .map(
       (x) => 
         `

@@ -36,7 +36,6 @@ function deleteBookmarks(id) {
   .then(data => store.bookmarks = store.bookmarks.filter(bookmark=>bookmark.id!==id))
 }
 
-
 export default {
   addBookmark,
   getBookmarks, 

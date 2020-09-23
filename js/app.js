@@ -11,6 +11,7 @@ import buttons from './buttons.js';
     buttons.cancelButton();
     buttons.deleteButton();
     buttons.moreInfo();
+    buttons.filterBookmarks();
    });
   }
   

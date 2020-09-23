@@ -51,14 +51,6 @@ function addButton() {
       return false;
     }
 
-    /*if (url.match(urlPattern)) {
-        console.log("successful url input")
-      } else {
-          console.log(url)
-          alert("Please supply a properly formated URL")
-      }*/
-
-    //console.log(title, url, desc, rating)
     return api
       .addBookmark({ title, url, desc, rating })
       .then(() => ui.render())
@@ -96,10 +88,24 @@ function moreInfo() {
     })
 }
 
+function filterBookmarks() {
+    $('main').on('change', '#filter', function() {
+    console.log('it is changed!');
+    const value = $(this).val();
+    store.changeFilter(value);
+    ui.render();
+   // const rating = store.bookmarks.filter(x => {return x.rating >= value});
+   // console.log(value, rating, store.changeFilter(1)); 
+    return value;
+  })
+}
+
+
 export default {
   addButton,
   cancelButton,
   newButton, 
   deleteButton,
-  moreInfo
+  moreInfo, 
+  filterBookmarks
 };  
