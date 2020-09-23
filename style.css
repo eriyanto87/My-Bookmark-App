@@ -7,6 +7,10 @@ body {
     font-family: 'Grandstander', cursive;
 }
 
+h1 {
+    text-shadow: 1px 1px 1px #E8175D;
+}
+
 button {
     border-radius: 5px;
     padding: 0.25rem;
@@ -16,9 +20,9 @@ button {
 li {
    list-style-type: none;
    background: #A8A7A7;
-   color: black;
-   align-self: center;
+   color: #000000;
    margin-top: 1rem;
+   margin-right: 2rem;
    padding: 1rem;
    border: solid 0.25rem #E8175D;
 }
@@ -27,11 +31,10 @@ a {
     color: #363636;
 }
 
-.bookmarks {
+#bookmarks {
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    width: 90%;
     
 }
 
@@ -45,6 +48,10 @@ a {
 }
 
 .bookmark-info {
+    background: #d67a7a;
+    border: 1px solid grey;
+    margin-bottom: 1rem;
+    border-radius: 7px;
     padding: 1rem;
 }
 
@@ -52,3 +59,24 @@ a {
     visibility: hidden;
 }
 
+.bold {
+    font-size: 20px;
+    text-shadow: 1px 1px 1px white;
+}
+
+@media all and (min-width: 800px) {
+    #bookmarks {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .add-bookmark-form {
+       margin: 1rem 25rem;
+       border-radius: 15px;
+    }
+
+    li {
+        border-radius: 10px;
+        margin: 1rem;
+    }
+}
