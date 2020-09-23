@@ -53,13 +53,8 @@ function addBookmarkView() {
 }
 
  function bookmarks() {
-   //if value 
-   console.log(store.bookmarks, store)
-   console.log(store.filter);
 
-   const filteredBookmarks = store.bookmarks.filter(x => {return x.rating >= store.filter})
-   console.log(filteredBookmarks)
-
+   const filteredBookmarks = store.bookmarks.filter(x => {return x.rating >= store.filter});
 
   return `<ul id="bookmarks">${filteredBookmarks
     .map(
@@ -76,7 +71,7 @@ function addBookmarkView() {
         <section>
         <span class="bold">Description: </span>${x.desc} 
         </section>
-        <span class="bold">Link: </span><a href='${x.url}' target="_blank">Click Here To Visit Site</a>
+        <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
         </div>
         <button id="more-info">More/Less Info</button>  
         <button id="delete">Delete</button>
@@ -85,7 +80,6 @@ function addBookmarkView() {
     )
     .join('')}</ul>
         `;
-        
 }
 
 function header() {
@@ -95,12 +89,6 @@ function header() {
 }
 
 function render() {
-  // Your application relies on the data from the API to load
-  // So you want to load that data each time when you render
-  // Before doing anything else and then do it again after you
-  // add, delete or edit a bookmark so this automatically should
-  // do that and you just call render() each time.
-
     $('main').html(`
       ${header()}
       ${toggleAddBookmark()}

@@ -2,19 +2,9 @@ import ui from './ui.js';
 import api from './api.js';
 import store from './store.js';
 
-/*const urlPattern = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-const regex = new RegExp(urlPattern);*/
-
-// you want to change where you render your ui bookmark view
-// you don't want to rerender the DOM after you click on
-// `new` because if you do that then the whole dom will rerender
-// even though you didn't change the data.
 function newButton() {
     $('main').on('click', '#new', (event) => {
       event.preventDefault();
-      // no need to rerender the whole dom when you
-      // click the new button. You're simply manipulating the DOM
-      // not the store.
       return $('#x').append(ui.addBookmarkView());
     });
   }
@@ -29,24 +19,17 @@ function cancelButton() {
 function addButton() {
   $('main').on('submit', '.add-bookmark-form', (event) => {
     event.preventDefault();
-    console.log('add button was clicked!');
     let title = $('main').find('#title').val();
     let url = $('main').find('#url').val();
     let desc = $('main').find('#desc').val();
     let rating = $('main').find('#rating').val();
 
-    console.log(title, url, desc, rating);
-    // Always good to have multiple validations.
     if (!title || title.trim() === '') {
-      // handle a better way to display an error this just prevents
-      // the rest of the function from running
       alert('Missing Title');
       return false;
     }
 
     if (!url || url.trim() === ''|| url === undefined) {
-      // handle a better way to display an error this just prevents
-      // the rest of the function from running
       alert('Missing url');
       return false;
     }
@@ -66,7 +49,6 @@ function deleteButton() {
 
     let id = $(event.target).parent().attr('id')
     console.log(id)
-
      return api
      .deleteBookmarks(id)
      .then(() => ui.render())
@@ -94,8 +76,6 @@ function filterBookmarks() {
     const value = $(this).val();
     store.changeFilter(value);
     ui.render();
-   // const rating = store.bookmarks.filter(x => {return x.rating >= value});
-   // console.log(value, rating, store.changeFilter(1)); 
     return value;
   })
 }

@@ -1,6 +1,5 @@
 
 function changeFilter(num) {
-    console.log(typeof num)
     return this.filter = Number(num);
   } 
 
