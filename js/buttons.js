@@ -36,7 +36,7 @@ function addButton() {
 
     return api
       .addBookmark({ title, url, desc, rating })
-      .then(() => ui.render())
+      .then(() => location.reload()) //ui.render()
       .catch((err) => {
         console.log(err.message);
       })
