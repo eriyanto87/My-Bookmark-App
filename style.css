@@ -58,8 +58,9 @@ a {
     overflow: hidden;
 }
 
-.bookmark-info p {
-    width: 300px;
+.desc {
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 .hidden {

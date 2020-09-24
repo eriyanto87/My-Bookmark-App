@@ -47,8 +47,6 @@ function addButton() {
 
 function deleteButton() {
   $("main").on("click", ".delete", (event) => {
-    console.log("delete button clicked");
-
     let id = $(event.target).parent().attr("id");
     console.log(id);
     return api
@@ -65,17 +63,14 @@ function deleteButton() {
 
 function moreInfo() {
   $("li").on("click", ".more-info", (event) => {
-    console.log("more info button was clicked!");
     let id = $(event.target).parent().attr("id");
     let target = $("main").find(`li[id=${id}]`).find(".bookmark-info");
-    console.log(id, target);
     $(target).toggleClass("hidden");
   });
 }
 
 function filterBookmarks() {
   $("main").on("change", "#filter", function () {
-    console.log("it is changed!");
     const value = $(this).val();
     store.changeFilter(value);
     ui.render();

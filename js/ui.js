@@ -65,13 +65,15 @@ function addBookmarkView() {
         <span class="bold">Name: </span>${x.title} 
         </p>
         <p> 
-        <span class="bold">Rating: </span> ${x.rating}
+        <span class="bold">Rating: </span> 
+        ${x.rating}
         </p>
         <div class="bookmark-info hidden">
           
           <h3 class="bold">Description:</h3>
-          <p>${x.desc}</p>
-          <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
+          <p class="desc">${x.desc}</p>
+          <span class="bold">Link: </span>
+          <a href='${x.url}' target="_blank">${x.url}</a>
         </div>
         <button class="more-info">More/Less Info</button>  
         <button class="delete">Delete</button>
@@ -95,7 +97,6 @@ function render() {
       <h3>My Bookmarks</h3>
       ${bookmarks()}
     `)
-    console.log(store)
 }
 
 export default {

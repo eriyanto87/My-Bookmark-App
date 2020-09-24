@@ -4,8 +4,6 @@ const api = 'https://thinkful-list-api.herokuapp.com';
 // it with your  store. Always!
 
 function addBookmark(bookmark) {
-  // check if desc exists
-  // check if rating exists
   return fetch(`${api}/evi/bookmarks`, {
     method: 'POST',
     headers: {
