@@ -36,7 +36,7 @@ function addButton() {
 
     return api
       .addBookmark({ title, url, desc, rating })
-      .then(() => location.reload()) //ui.render()
+      .then(() => location.reload())
       .catch((err) => {
         console.log(err.message);
       })
@@ -56,7 +56,7 @@ function deleteButton() {
        console.log(err.message);
      })
 })
-}
+}   
 
 function moreInfo() {
     $('li').on('click', '#more-info', (event) => {
@@ -75,7 +75,7 @@ function filterBookmarks() {
     console.log('it is changed!');
     const value = $(this).val();
     store.changeFilter(value);
-    ui.render();
+    ui.render(); 
     return value;
   })
 }

@@ -73,7 +73,7 @@ function addBookmarkView() {
         </section>
         <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
         </div>
-        <button id="more-info">More/Less Info</button>  
+          <button onclick='${buttons.moreInfo()}' id="more-info">More/Less Info</button>  
         <button id="delete">Delete</button>
         </li> 
         `
@@ -87,7 +87,7 @@ function header() {
     <h1>My Bookmark App</h1>
     `;
 }
-  
+
 function render() {
     $('main').html(`
       ${header()}
