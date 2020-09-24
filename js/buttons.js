@@ -44,7 +44,7 @@ function addButton() {
 }
 
 function deleteButton() {
- $('main').on('click', '#delete', (event) => {
+ $('main').on('click', '.delete', (event) => {
      console.log('delete button clicked'); 
 
     let id = $(event.target).parent().attr('id')
@@ -59,7 +59,7 @@ function deleteButton() {
 }   
 
 function moreInfo() {
-    $('li').on('click', '#more-info', (event) => {
+    $('li').on('click', '.more-info', (event) => {
         console.log('more info button was clicked!'); 
         let id = $(event.target).parent().attr('id'); 
         let target = $('main')
@@ -75,8 +75,7 @@ function filterBookmarks() {
     console.log('it is changed!');
     const value = $(this).val();
     store.changeFilter(value);
-    ui.render(); 
-    return value;
+    ui.render();
   })
 }
 

@@ -73,8 +73,8 @@ function addBookmarkView() {
         </section>
         <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
         </div>
-          <button onclick='${buttons.moreInfo()}' id="more-info">More/Less Info</button>  
-        <button id="delete">Delete</button>
+          <button class="more-info">More/Less Info</button>  
+        <button class="delete">Delete</button>
         </li> 
         `
     )
@@ -94,7 +94,8 @@ function render() {
       ${toggleAddBookmark()}
       <h3>My Bookmarks</h3>
       ${bookmarks()}
-    `);
+    `)
+    console.log(store)
 }
 
 export default {
