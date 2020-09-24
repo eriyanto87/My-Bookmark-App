@@ -48,15 +48,22 @@ a {
 }
 
 .bookmark-info {
+    display: flex; 
+    flex-direction: column;
     background: #d67a7a;
     border: 1px solid grey;
     margin-bottom: 1rem;
     border-radius: 7px;
     padding: 1rem;
+    overflow: hidden;
+}
+
+.bookmark-info p {
+    width: 300px;
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .bold {

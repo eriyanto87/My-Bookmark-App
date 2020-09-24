@@ -68,12 +68,12 @@ function addBookmarkView() {
         <span class="bold">Rating: </span> ${x.rating}
         </p>
         <div class="bookmark-info hidden">
-        <section>
-        <span class="bold">Description: </span>${x.desc} 
-        </section>
-        <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
+          
+          <h3 class="bold">Description:</h3>
+          <p>${x.desc}</p>
+          <span class="bold">Link: </span><a href='${x.url}' target="_blank">${x.url}</a>
         </div>
-          <button class="more-info">More/Less Info</button>  
+        <button class="more-info">More/Less Info</button>  
         <button class="delete">Delete</button>
         </li> 
         `
